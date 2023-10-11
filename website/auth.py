@@ -15,10 +15,13 @@ def login():
         if user:
             if check_password_hash(user.password, password):
                 flash("Logged in", category='success')
+                return redirect(url_for('views.home'))
             else:
                 flash("Incorrect info", category="error")
         else:
             flash("User does not exist", category="error")
+    
+    return render_template("login.html")
 
 @auth.route("/logout")
 def logout():
