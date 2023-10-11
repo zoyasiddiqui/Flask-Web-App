@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{%block title%}Flask Web App{%endblock%}</title>
+</head>
+<body>
+    
+    <nav>
+        <button class="navbar-toggle">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse">
+            <div class="navbar-nav">
+                <a class="nav-item" href="/login" id="login">Login</a>
+                <a class="nav-item" href="/signup" id="signup">Sign Up</a>
+                <a class="nav-item" href="/logout" id="logout">Logout</a>
+                <a class="nav-item" href="/home" id="home">Home</a>
+            </div>
+        </div>
+        
+    </nav>
+    
+    <script>
+        src="{{ url_for('static', filename='styles.css')}}"
+    </script>
+
+</body>
+</html>
