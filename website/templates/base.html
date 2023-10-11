@@ -27,6 +27,19 @@
         {%block content%}
         {%endblock%}
     </div>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert dismissable">
+                    {{ message }}
+                    <button type="button" class="close">
+                        <span>&times;</span>
+                    </button>
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
     
     <script>
         src="{{ url_for('static', filename='styles.css')}}"
