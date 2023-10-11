@@ -9,12 +9,15 @@ auth = Blueprint('auth', __name__)
 def login():
     if request.method == "POST":
         email = request.form.get("email")
-        password = request.form.get("password")
+        password = request.form.get("password1")
 
         user = User.query.filter_by(email=email).first()
+        print(user.password)
+
         if user:
-            if check_password_hash(user.password, password):
-                flash("Logged in", category='success')
+            curr_password = generate_password_hash(password, method="sha256")
+            if curr_password == user.password:
+                flash("Logged in", category="success")
                 return redirect(url_for('views.home'))
             else:
                 flash("Incorrect info", category="error")
